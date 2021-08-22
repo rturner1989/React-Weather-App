@@ -1,11 +1,13 @@
 import React from "react";
-import { useGlobalContext } from "./context";
+import SearchMenu from "./components/SearchMenu";
+import CardContainer from "./components/CardContainer";
 
 const App = () => {
-    const {} = useGlobalContext();
     return (
         <div id="app-container">
-            <p>Hello World</p>
+            <h1>React Weather App</h1>
+            <SearchMenu />
+            <CardContainer />
         </div>
     );
 };
