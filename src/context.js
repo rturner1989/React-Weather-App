@@ -8,25 +8,35 @@ const AppProvider = ({ children }) => {
     const [weatherData, setWeatherData] = useState([]);
     const [city, setCity] = useState("");
 
+    const Url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&q=${city}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`;
+
     const getLocation = () => {
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition((position) => {
             setLat(position.coords.latitude);
             setLong(position.coords.longitude);
         });
     };
 
     const getWeatherData = async () => {
-        const response = await fetch(
-            `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&q=${city}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
-        );
+        const response = await fetch(Url);
         const data = await response.json();
         setWeatherData([...weatherData, data]);
         console.log(data);
     };
 
+    useEffect(() => {
+        getLocation();
+    }, []);
+
     return (
         <AppContext.Provider
-            value={{ weatherData, city, setCity, getWeatherData, getLocation }}
+            value={{
+                weatherData,
+                city,
+                setCity,
+                getWeatherData,
+                getLocation,
+            }}
         >
             {children}
         </AppContext.Provider>

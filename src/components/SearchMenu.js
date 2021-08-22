@@ -2,7 +2,7 @@ import React from "react";
 import { useGlobalContext } from "../Context";
 
 const SearchMenu = () => {
-    const { setCity, getWeatherData, getLocation } = useGlobalContext();
+    const { setCity, getWeatherData } = useGlobalContext();
     return (
         <form>
             <input
@@ -22,9 +22,8 @@ const SearchMenu = () => {
             <button
                 type="submit"
                 onClick={(e) => {
-                    console.log("hello");
                     e.preventDefault();
-                    getLocation();
+                    getWeatherData();
                 }}
             >
                 Current Location
