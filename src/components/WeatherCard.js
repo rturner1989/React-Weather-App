@@ -2,9 +2,9 @@ import React from "react";
 import moment from "moment";
 import { Card } from "semantic-ui-react";
 
-const Weather = ({ weatherData }) => {
+const WeatherCard = ({ weatherData }) => {
     return (
-        <Card>
+        <Card id={weatherData.id}>
             <Card.Content>
                 <Card.Header className="header">
                     City Name: {weatherData.name}
@@ -33,4 +33,4 @@ const Weather = ({ weatherData }) => {
     );
 };
 
-export default Weather;
+export default WeatherCard;

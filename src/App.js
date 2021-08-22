@@ -1,16 +1,12 @@
 import React from "react";
-import Weather from "./components/Weather";
-import { useGlobalContext } from "./Context";
+import CardContainer from "./components/CardContainer";
+import SearchMenu from "./components/SearchMenu";
 
 const App = () => {
-    const { data } = useGlobalContext();
     return (
         <div id="app-container">
-            {typeof data.main != "undefined" ? (
-                <Weather weatherData={data} />
-            ) : (
-                <div></div>
-            )}
+            <SearchMenu />
+            <CardContainer />
         </div>
     );
 };
