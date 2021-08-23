@@ -17,12 +17,11 @@ const WeatherCard = ({ weatherData }) => {
                 <p className="weather-info">
                     Temperature: {weatherData.main.temp}&deg;C
                 </p>
-                {/* <p className="weather-info">
-                    Sunrise:{" "}
-                    {new Date(
-                        weatherData.sys.sunrise * 1000
-                    ).toLocaleTimeString("en-GB")}
-                    am
+                <p className="weather-info">
+                    Humidity: {weatherData.main.humidity}%
+                </p>
+                <p className="weather-info">
+                    Current Time: {moment().format("LTS")}
                 </p>
                 <p className="weather-info">
                     Sunset:{" "}
@@ -30,13 +29,7 @@ const WeatherCard = ({ weatherData }) => {
                         "en-GB"
                     )}
                     pm
-                </p> */}
-                <p className="weather-info">
-                    Humidity: {weatherData.main.humidity}%
                 </p>
-
-                <p className="weather-info">Day: {moment().format("dddd")}</p>
-                <p className="weather-info">Date: {moment().format("LL")}</p>
             </Card.Content>
         </Card>
     );

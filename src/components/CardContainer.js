@@ -6,7 +6,7 @@ const CardContainer = () => {
     const { weatherData } = useGlobalContext();
     return (
         <div id="weather-data-container">
-            {weatherData.length != 0 ? (
+            {weatherData.length !== 0 ? (
                 weatherData.map((item, index) => {
                     return <WeatherCard key={index} weatherData={item} />;
                 })
