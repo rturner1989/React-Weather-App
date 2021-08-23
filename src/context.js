@@ -8,7 +8,8 @@ const AppProvider = ({ children }) => {
     const [weatherData, setWeatherData] = useState([]);
     const [city, setCity] = useState("");
 
-    const Url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&q=${city}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`;
+    const cityURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`;
+    const longLatURL = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`;
 
     const getLocation = () => {
         navigator.geolocation.getCurrentPosition((position) => {
@@ -17,8 +18,14 @@ const AppProvider = ({ children }) => {
         });
     };
 
-    const getWeatherData = async () => {
-        const response = await fetch(Url);
+    const getCityData = async () => {
+        const response = await fetch(cityURL);
+        const data = await response.json();
+        setWeatherData([...weatherData, data]);
+        console.log(data);
+    };
+    const getLongLatData = async () => {
+        const response = await fetch(longLatURL);
         const data = await response.json();
         setWeatherData([...weatherData, data]);
         console.log(data);
@@ -34,7 +41,8 @@ const AppProvider = ({ children }) => {
                 weatherData,
                 city,
                 setCity,
-                getWeatherData,
+                getCityData,
+                getLongLatData,
                 getLocation,
             }}
         >

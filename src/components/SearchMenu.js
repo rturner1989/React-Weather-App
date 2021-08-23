@@ -1,32 +1,36 @@
 import React from "react";
 import { useGlobalContext } from "../Context";
+import { GrLocation } from "react-icons/gr";
 
 const SearchMenu = () => {
-    const { setCity, getWeatherData } = useGlobalContext();
+    const { setCity, getCityData, getLongLatData } = useGlobalContext();
     return (
-        <form>
+        <form id="location-searchbar">
             <input
+                id="location-input"
                 type="text"
                 placeholder="Search for a City"
                 onChange={(e) => setCity(e.target.value)}
             />
             <button
+                id="search-btn"
                 type="submit"
                 onClick={(e) => {
                     e.preventDefault();
-                    getWeatherData();
+                    getCityData();
                 }}
             >
                 Submit
             </button>
             <button
+                id="current-location-btn"
                 type="submit"
                 onClick={(e) => {
                     e.preventDefault();
-                    getWeatherData();
+                    getLongLatData();
                 }}
             >
-                Current Location
+                <GrLocation />
             </button>
         </form>
     );
