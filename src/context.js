@@ -3,37 +3,35 @@ import React, { useContext, useState, useEffect } from "react";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-    const [long, setLong] = useState([]);
-    const [lat, setLat] = useState([]);
     const [weatherData, setWeatherData] = useState([]);
     const [city, setCity] = useState("");
 
-    const cityURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`;
-    const longLatURL = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`;
-
     const getLocation = () => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            setLat(position.coords.latitude);
-            setLong(position.coords.longitude);
+        return new Promise((resolve, rejection) => {
+            navigator.geolocation.getCurrentPosition(resolve, rejection);
         });
     };
 
     const getCityData = async () => {
-        const response = await fetch(cityURL);
+        const response = await fetch(
+            `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
+        );
         const data = await response.json();
         setWeatherData([...weatherData, data]);
         console.log(data);
     };
     const getLongLatData = async () => {
-        const response = await fetch(longLatURL);
+        const position = await getLocation();
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        const response = await fetch(
+            `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
+        );
         const data = await response.json();
         setWeatherData([...weatherData, data]);
         console.log(data);
     };
-
-    useEffect(() => {
-        getLocation();
-    }, []);
 
     return (
         <AppContext.Provider

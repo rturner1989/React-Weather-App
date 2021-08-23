@@ -3,13 +3,13 @@ import { useGlobalContext } from "../Context";
 import { GrLocation } from "react-icons/gr";
 
 const SearchMenu = () => {
-    const { setCity, getCityData, getLongLatData } = useGlobalContext();
+    const { city, setCity, getCityData, getLongLatData } = useGlobalContext();
     return (
         <form id="location-searchbar">
             <input
                 id="location-input"
                 type="text"
-                placeholder="Search for a City"
+                placeholder="Search for a location"
                 onChange={(e) => setCity(e.target.value)}
             />
             <button
@@ -19,6 +19,7 @@ const SearchMenu = () => {
                     e.preventDefault();
                     getCityData();
                 }}
+                disabled={city === "" ? true : false}
             >
                 Submit
             </button>
