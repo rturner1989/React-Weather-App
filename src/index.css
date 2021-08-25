@@ -23,6 +23,17 @@
 }
 
 .weather-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: black solid 1px;
     border-radius: 5px;
+    width: 180px;
+    padding: 5px;
+}
+.weather-card hr {
+    width: 100%;
+}
+.weather-card img {
+    width: 50px;
 }
