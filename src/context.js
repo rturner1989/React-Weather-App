@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 
 const AppContext = React.createContext();
 
@@ -19,24 +19,21 @@ const AppProvider = ({ children }) => {
         );
         if (response.status !== 404) {
             const data = await response.json();
-            setWeatherData([...weatherData, data]);
-            console.log(data);
+            // setWeatherData([...weatherData, data]);
+            // console.log(data);
         } else {
             alert("Error - Invalid Location Entered");
         }
     };
 
     const getHourlyCityData = async () => {
-        const position = await getLocation();
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-
         const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=,minutely,hourly&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
+            `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=91d2f9efc77a289707cbc8c106b46727&units=metric`
         );
         const data = await response.json();
         setHourlyWeatherData([...hourlyWeatherData, data]);
         console.log(data);
+        console.log(hourlyWeatherData);
     };
 
     const getLongLatData = async () => {

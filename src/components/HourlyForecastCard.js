@@ -3,9 +3,11 @@ import React from "react";
 const HourlyForecastCard = ({ hourlyWeatherData }) => {
     return (
         <div>
-            <p>{hourlyWeatherData.daily[0].weather.main}</p>
-            <p></p>
-            <p></p>
+            <p className="daily-weather-info">
+                {new Date(
+                    hourlyWeatherData.list[0].dt * 1000
+                ).toLocaleTimeString("en-GB", { timeZoneName: "short" })}
+            </p>
         </div>
     );
 };
