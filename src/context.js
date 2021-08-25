@@ -9,7 +9,7 @@ const AppProvider = ({ children }) => {
 
     const getCityData = async (cityName) => {
         const response = await fetch(
-            `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
+            `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
         );
         if (response.status !== 404) {
             const city = await response.json();
@@ -47,7 +47,7 @@ const AppProvider = ({ children }) => {
         const longitude = position.coords.longitude;
 
         const response = await fetch(
-            `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
         );
         const city = await response.json();
         const forecast = await getDailyForecast(latitude, longitude);

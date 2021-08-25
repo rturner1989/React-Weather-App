@@ -11,6 +11,8 @@ const DailyForecastCard = ({ day }) => {
                 alt="weather icon"
             />
             <p className="forecast-info">{day.weather[0].description}</p>
+            <p className="forecast-info"> Min {day.temp.min}&deg;C</p>
+            <p className="forecast-info"> Max {day.temp.max}&deg;C</p>
             <table>
                 <tr>
                     <td></td>
@@ -38,10 +40,6 @@ const DailyForecastCard = ({ day }) => {
                     <td>{day.feels_like.night}&deg;C</td>
                 </tr>
             </table>
-            {/* <p className="forecast-info">Morning {day.temp.morn}&deg;C</p>
-            <p className="forecast-info">Afternoon {day.temp.day}&deg;C</p>
-            <p className="forecast-info">Evening {day.temp.eve}&deg;C</p>
-            <p className="forecast-info">Night {day.temp.night}&deg;C</p> */}
         </div>
     );
 };
