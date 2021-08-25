@@ -4,14 +4,8 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
     const [weatherData, setWeatherData] = useState([]);
-    const [hourlyWeatherData, setHourlyWeatherData] = useState([]);
     const [city, setCity] = useState("");
-
-    const getLocation = () => {
-        return new Promise((resolve, rejection) => {
-            navigator.geolocation.getCurrentPosition(resolve, rejection);
-        });
-    };
+    const [currentForecast, setCurrentForecast] = useState(null);
 
     const getCityData = async () => {
         const response = await fetch(
@@ -19,8 +13,7 @@ const AppProvider = ({ children }) => {
         );
         if (response.status !== 404) {
             const data = await response.json();
-            // setWeatherData([...weatherData, data]);
-            // console.log(data);
+            return data;
         } else {
             alert("Error - Invalid Location Entered");
         }
@@ -28,12 +21,26 @@ const AppProvider = ({ children }) => {
 
     const getHourlyCityData = async () => {
         const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=91d2f9efc77a289707cbc8c106b46727&units=metric`
+            `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
         );
         const data = await response.json();
-        setHourlyWeatherData([...hourlyWeatherData, data]);
-        console.log(data);
-        console.log(hourlyWeatherData);
+        return data;
+    };
+
+    const getCompleteCityData = async () => {
+        const city = await getCityData();
+        const forecast = await getHourlyCityData();
+        setWeatherData([...weatherData, { city, forecast }]);
+    };
+
+    const updateCurrentForecast = (index) => {
+        setCurrentForecast(weatherData[index].forecast);
+    };
+
+    const getLocation = () => {
+        return new Promise((resolve, rejection) => {
+            navigator.geolocation.getCurrentPosition(resolve, rejection);
+        });
     };
 
     const getLongLatData = async () => {
@@ -45,7 +52,7 @@ const AppProvider = ({ children }) => {
             `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
         );
         const data = await response.json();
-        setWeatherData([...weatherData, data]);
+        setWeatherData([...weatherData, { data }]);
         console.log(data);
     };
 
@@ -53,14 +60,14 @@ const AppProvider = ({ children }) => {
         <AppContext.Provider
             value={{
                 weatherData,
-                hourlyWeatherData,
                 city,
+                currentForecast,
                 setCity,
-                getCityData,
-                setHourlyWeatherData,
                 getLongLatData,
                 getLocation,
-                getHourlyCityData,
+                getCompleteCityData,
+                setCurrentForecast,
+                updateCurrentForecast,
             }}
         >
             {children}

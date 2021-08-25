@@ -3,7 +3,7 @@ import { useGlobalContext } from "../Context";
 import { GrLocation } from "react-icons/gr";
 
 const SearchMenu = () => {
-    const { city, setCity, getCityData, getLongLatData, getHourlyCityData } =
+    const { city, setCity, getLongLatData, getCompleteCityData } =
         useGlobalContext();
     return (
         <form id="location-searchbar">
@@ -18,7 +18,7 @@ const SearchMenu = () => {
                 type="submit"
                 onClick={(e) => {
                     e.preventDefault();
-                    getCityData();
+                    getCompleteCityData();
                 }}
                 disabled={city === "" ? true : false}
             >
@@ -33,16 +33,6 @@ const SearchMenu = () => {
                 }}
             >
                 <GrLocation />
-            </button>
-            <button
-                id="hourly-weather-btn"
-                type="submit"
-                onClick={(e) => {
-                    e.preventDefault();
-                    getHourlyCityData();
-                }}
-            >
-                hourly
             </button>
         </form>
     );

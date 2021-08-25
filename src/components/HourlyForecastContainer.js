@@ -3,14 +3,14 @@ import { useGlobalContext } from "../Context";
 import HourlyForecastCard from "./HourlyForecastCard";
 
 const HourlyForecastContainer = () => {
-    const { hourlyWeatherData } = useGlobalContext();
+    const {} = useGlobalContext();
     return (
         <div id="hourly-weather-forecast">
-            {hourlyWeatherData.map((item, index) => {
-                return (
-                    <HourlyForecastCard key={index} hourlyWeatherData={item} />
-                );
-            })}
+            <HourlyForecastCard />
+            <HourlyForecastCard />
+            <HourlyForecastCard />
+            <HourlyForecastCard />
+            <HourlyForecastCard />
         </div>
     );
 };

@@ -9,7 +9,14 @@ const CardContainer = () => {
         <div id="weather-data-container">
             {weatherData.length !== 0 ? (
                 weatherData.map((item, index) => {
-                    return <WeatherCard key={index} weatherData={item} />;
+                    return (
+                        <WeatherCard
+                            key={index}
+                            index={index}
+                            weatherData={item.city}
+                            longLatData={item.data}
+                        />
+                    );
                 })
             ) : (
                 <div></div>
