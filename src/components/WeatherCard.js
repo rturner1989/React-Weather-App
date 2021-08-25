@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import { useGlobalContext } from "../Context";
 
-const WeatherCard = ({ weatherData, longLatData, index }) => {
+const WeatherCard = ({ weatherData, index }) => {
     const { updateCurrentForecast } = useGlobalContext();
     return (
         <div

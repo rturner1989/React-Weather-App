@@ -14,7 +14,6 @@ const CardContainer = () => {
                             key={index}
                             index={index}
                             weatherData={item.city}
-                            longLatData={item.data}
                         />
                     );
                 })

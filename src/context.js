@@ -4,37 +4,27 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
     const [weatherData, setWeatherData] = useState([]);
-    const [city, setCity] = useState("");
     const [currentForecast, setCurrentForecast] = useState(null);
 
-    const getCityData = async () => {
+    const getCityData = async (cityName) => {
         const response = await fetch(
-            `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
+            `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
         );
         if (response.status !== 404) {
-            const data = await response.json();
-            return data;
+            const city = await response.json();
+            const forecast = await getHourlyCityData(cityName);
+            setWeatherData([...weatherData, { city, forecast }]);
         } else {
             alert("Error - Invalid Location Entered");
         }
     };
 
-    const getHourlyCityData = async () => {
+    const getHourlyCityData = async (cityName) => {
         const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
+            `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
         );
         const data = await response.json();
         return data;
-    };
-
-    const getCompleteCityData = async () => {
-        const city = await getCityData();
-        const forecast = await getHourlyCityData();
-        setWeatherData([...weatherData, { city, forecast }]);
-    };
-
-    const updateCurrentForecast = (index) => {
-        setCurrentForecast(weatherData[index].forecast);
     };
 
     const getLocation = () => {
@@ -51,21 +41,23 @@ const AppProvider = ({ children }) => {
         const response = await fetch(
             `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
         );
-        const data = await response.json();
-        setWeatherData([...weatherData, { data }]);
-        console.log(data);
+        const city = await response.json();
+        const forecast = await getHourlyCityData(city.name);
+        setWeatherData([...weatherData, { city, forecast }]);
+    };
+
+    const updateCurrentForecast = (index) => {
+        setCurrentForecast(weatherData[index].forecast);
     };
 
     return (
         <AppContext.Provider
             value={{
                 weatherData,
-                city,
                 currentForecast,
-                setCity,
+                getCityData,
                 getLongLatData,
                 getLocation,
-                getCompleteCityData,
                 setCurrentForecast,
                 updateCurrentForecast,
             }}
