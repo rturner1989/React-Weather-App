@@ -1,5 +1,6 @@
 import React from "react";
 import { useGlobalContext } from "../Context";
+
 import WeatherCard from "./WeatherCard";
 
 const CardContainer = () => {

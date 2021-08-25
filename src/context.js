@@ -1,9 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
     const [weatherData, setWeatherData] = useState([]);
+    const [hourlyWeatherData, setHourlyWeatherData] = useState([]);
     const [city, setCity] = useState("");
 
     const getLocation = () => {
@@ -24,6 +25,20 @@ const AppProvider = ({ children }) => {
             alert("Error - Invalid Location Entered");
         }
     };
+
+    const getHourlyCityData = async () => {
+        const position = await getLocation();
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=,minutely,hourly&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
+        );
+        const data = await response.json();
+        setHourlyWeatherData([...hourlyWeatherData, data]);
+        console.log(data);
+    };
+
     const getLongLatData = async () => {
         const position = await getLocation();
         const latitude = position.coords.latitude;
@@ -41,11 +56,14 @@ const AppProvider = ({ children }) => {
         <AppContext.Provider
             value={{
                 weatherData,
+                hourlyWeatherData,
                 city,
                 setCity,
                 getCityData,
+                setHourlyWeatherData,
                 getLongLatData,
                 getLocation,
+                getHourlyCityData,
             }}
         >
             {children}
