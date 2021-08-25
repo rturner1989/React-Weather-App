@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 import { useGlobalContext } from "../Context";
 
 const WeatherCard = ({ weatherData, index }) => {
@@ -11,7 +10,7 @@ const WeatherCard = ({ weatherData, index }) => {
             onClick={() => updateCurrentForecast(index)}
         >
             <h3>{weatherData.name}</h3>
-            <p className="weather-info">Time: {moment().format("LTS")}</p>
+            <p className="weather-info">Time: {weatherData.time}</p>
             <hr />
             <img
                 src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}

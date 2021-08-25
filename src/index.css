@@ -19,7 +19,6 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
 }
 
 .weather-card {
@@ -29,11 +28,31 @@
     border: black solid 1px;
     border-radius: 5px;
     width: 180px;
+    margin: 10px;
     padding: 5px;
 }
+.weather-card:hover {
+    box-shadow: 2px 2px 2px black;
+}
+
 .weather-card hr {
     width: 100%;
 }
 .weather-card img {
     width: 50px;
+}
+#daily-weather-forecast {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.forecast-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: black solid 1px;
+    border-radius: 5px;
+    width: 130px;
+    margin: 10px;
+    padding: 5px;
 }

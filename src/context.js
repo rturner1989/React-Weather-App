@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import moment from "moment";
 
 const AppContext = React.createContext();
 
@@ -16,7 +17,10 @@ const AppProvider = ({ children }) => {
                 city.coord.lon,
                 city.coord.lat
             );
-            setWeatherData([...weatherData, { city, forecast }]);
+            setWeatherData([
+                ...weatherData,
+                { city: { ...city, time: moment().format("LTS") }, forecast },
+            ]);
         } else {
             alert("Error - Invalid Location Entered");
         }
@@ -24,7 +28,7 @@ const AppProvider = ({ children }) => {
 
     const getDailyForecast = async (long, lat) => {
         const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=current,minutely,hourly,alerts&appid=91d2f9efc77a289707cbc8c106b46727`
+            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=current,minutely,hourly,alerts&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
         );
         const data = await response.json();
         console.log(data);
@@ -47,7 +51,10 @@ const AppProvider = ({ children }) => {
         );
         const city = await response.json();
         const forecast = await getDailyForecast(latitude, longitude);
-        setWeatherData([...weatherData, { city, forecast }]);
+        setWeatherData([
+            ...weatherData,
+            { city: { ...city, time: moment().format("LTS") }, forecast },
+        ]);
     };
 
     const updateCurrentForecast = (index) => {
