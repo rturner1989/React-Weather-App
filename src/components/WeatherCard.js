@@ -17,7 +17,9 @@ const WeatherCard = ({ weatherData, index }) => {
                 alt="weather icon"
             />
             <p className="weather-info">{weatherData.weather[0].description}</p>
-            <p className="weather-info">{weatherData.main.temp}&deg;C</p>
+            <p className="weather-info">
+                {Math.round(weatherData.main.temp)}&deg;C
+            </p>
             <hr />
             <p className="weather-info">
                 Humidity: {weatherData.main.humidity}%

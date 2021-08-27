@@ -11,34 +11,35 @@ const DailyForecastCard = ({ day }) => {
                 alt="weather icon"
             />
             <p className="forecast-info">{day.weather[0].description}</p>
-            <p className="forecast-info"> Min {day.temp.min}&deg;C</p>
-            <p className="forecast-info"> Max {day.temp.max}&deg;C</p>
+            <p className="forecast-info"> Humidity: {day.humidity}%</p>
             <table>
-                <tr>
-                    <td></td>
-                    <td>Temp</td>
-                    <td>Feels Like</td>
-                </tr>
-                <tr>
-                    <td>Morning</td>
-                    <td>{day.temp.morn}&deg;C</td>
-                    <td>{day.feels_like.morn}&deg;C</td>
-                </tr>
-                <tr>
-                    <td>Afternoon</td>
-                    <td>{day.temp.day}&deg;C</td>
-                    <td>{day.feels_like.day}&deg;C</td>
-                </tr>
-                <tr>
-                    <td>Evening</td>
-                    <td>{day.temp.eve}&deg;C</td>
-                    <td>{day.feels_like.eve}&deg;C</td>
-                </tr>
-                <tr>
-                    <td>Night</td>
-                    <td>{day.temp.night}&deg;C</td>
-                    <td>{day.feels_like.night}&deg;C</td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <th>Temp</th>
+                        <th>Feels Like</th>
+                    </tr>
+                    <tr>
+                        <th>Morning</th>
+                        <td>{Math.round(day.temp.morn)}&deg;C</td>
+                        <td>{Math.round(day.feels_like.morn)}&deg;C</td>
+                    </tr>
+                    <tr>
+                        <th>Afternoon</th>
+                        <td>{Math.round(day.temp.day)}&deg;C</td>
+                        <td>{Math.round(day.feels_like.day)}&deg;C</td>
+                    </tr>
+                    <tr>
+                        <th>Evening</th>
+                        <td>{Math.round(day.temp.eve)}&deg;C</td>
+                        <td>{Math.round(day.feels_like.eve)}&deg;C</td>
+                    </tr>
+                    <tr>
+                        <th>Night</th>
+                        <td>{Math.round(day.temp.night)}&deg;C</td>
+                        <td>{Math.round(day.feels_like.night)}&deg;C</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     );

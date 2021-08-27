@@ -12,9 +12,10 @@
 #app-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     height: 100%;
+    width: 100%;
 }
-
 #weather-data-container {
     display: flex;
     flex-direction: row;
@@ -33,6 +34,9 @@
 }
 .weather-card:hover {
     box-shadow: 2px 2px 2px black;
+}
+.weather-card:focus {
+    border: 2px solid red;
 }
 
 .weather-card hr {
@@ -60,11 +64,7 @@
     width: 100%;
 }
 
-tr {
-    outline: 1px solid black;
-}
 td {
-    outline: 1px solid black;
     text-align: center;
     padding: 3px;
 }
