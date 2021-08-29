@@ -16,7 +16,10 @@ const WeatherCard = ({ weatherData, index }) => {
                 src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
                 alt="weather icon"
             />
-            <p className="weather-info">{weatherData.weather[0].description}</p>
+            <p className="weather-info">
+                {weatherData.weather[0].description.charAt(0).toUpperCase() +
+                    weatherData.weather[0].description.slice(1)}
+            </p>
             <p className="weather-info">
                 {Math.round(weatherData.main.temp)}&deg;C
             </p>
