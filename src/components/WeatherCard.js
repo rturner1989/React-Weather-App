@@ -3,6 +3,12 @@ import { useGlobalContext } from "../Context";
 
 const WeatherCard = ({ weatherData, index }) => {
     const { updateCurrentForecast } = useGlobalContext();
+
+    const words = weatherData.weather[0].description;
+    const replace = words.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+        letter.toUpperCase()
+    );
+
     return (
         <div
             id={weatherData.id}
@@ -16,10 +22,7 @@ const WeatherCard = ({ weatherData, index }) => {
                 src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
                 alt="weather icon"
             />
-            <p className="weather-info">
-                {weatherData.weather[0].description.charAt(0).toUpperCase() +
-                    weatherData.weather[0].description.slice(1)}
-            </p>
+            <p className="weather-info">{replace}</p>
             <p className="weather-info">
                 {Math.round(weatherData.main.temp)}&deg;C
             </p>

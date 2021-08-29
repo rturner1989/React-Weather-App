@@ -1,6 +1,11 @@
 import React from "react";
 
 const DailyForecastCard = ({ day }) => {
+    const words = day.weather[0].description;
+    const replace = words.replace(/(^\w{1})|(\s+\w{1})/g, (letter) =>
+        letter.toUpperCase()
+    );
+
     return (
         <div className="forecast-card">
             <h4 className="daily-weather-info">
@@ -10,7 +15,7 @@ const DailyForecastCard = ({ day }) => {
                 src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
                 alt="weather icon"
             />
-            <p className="forecast-info">{day.weather[0].description}</p>
+            <p className="forecast-info">{replace}</p>
             <p className="forecast-info"> Humidity: {day.humidity}%</p>
             <table>
                 <tbody>
