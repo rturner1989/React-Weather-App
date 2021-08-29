@@ -19,7 +19,10 @@ const AppProvider = ({ children }) => {
             );
             setWeatherData([
                 ...weatherData,
-                { city: { ...city, time: moment().format("LTS") }, forecast },
+                {
+                    city: { ...city, time: moment().format("LTS") },
+                    forecast,
+                },
             ]);
         } else {
             alert("Error - Invalid Location Entered");
