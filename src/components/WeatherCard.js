@@ -15,28 +15,28 @@ const WeatherCard = ({ weatherData, index }) => {
             className="weather-card"
             onClick={() => updateCurrentForecast(index)}
         >
-            <h3>{weatherData.name}</h3>
-            <p className="weather-info">Time: {weatherData.time}</p>
-            <hr />
-            <img
-                src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
-                alt="weather icon"
-            />
-            <p className="weather-info">{replace}</p>
-            <p className="weather-info">
-                {Math.round(weatherData.main.temp)}&deg;C
-            </p>
-            <hr />
-            <p className="weather-info">
-                Humidity: {weatherData.main.humidity}%
-            </p>
-            <p className="weather-info">
-                Sunset:{" "}
-                {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString(
-                    "en-GB"
-                )}
-                pm
-            </p>
+            <div className="weather-info">
+                <h3>{weatherData.name}</h3>
+                <p>Time: {weatherData.time}</p>
+            </div>
+            <div className="weather-info">
+                <img
+                    src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
+                    alt="weather icon"
+                />
+                <p>{replace}</p>
+                <p>{Math.round(weatherData.main.temp)}&deg;C</p>
+            </div>
+            <div className="weather-info">
+                <p>Humidity: {weatherData.main.humidity}%</p>
+                <p>
+                    Sunset:{" "}
+                    {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString(
+                        "en-GB"
+                    )}
+                    pm
+                </p>
+            </div>
         </div>
     );
 };
