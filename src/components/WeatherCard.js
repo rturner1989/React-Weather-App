@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobalContext } from "../Context";
+import { useGlobalContext } from "../context";
 
 const WeatherCard = ({ weatherData, index }) => {
     const { updateCurrentForecast } = useGlobalContext();

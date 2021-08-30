@@ -1,5 +1,5 @@
 import React from "react";
-import { useGlobalContext } from "../Context";
+import { useGlobalContext } from "../context";
 import DailyForecastCard from "./DailyForecastCard";
 
 const DailyForecastContainer = () => {
@@ -9,6 +9,7 @@ const DailyForecastContainer = () => {
             {currentForecast &&
                 currentForecast.daily.map((day, index) => {
                     if (index !== 0) {
+                        console.log(day);
                         return <DailyForecastCard key={index} day={day} />;
                     }
                 })}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGlobalContext } from "../Context";
+import { useGlobalContext } from "../context";
 import { GrLocation } from "react-icons/gr";
 
 const SearchMenu = () => {
