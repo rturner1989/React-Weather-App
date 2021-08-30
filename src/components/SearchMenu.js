@@ -9,7 +9,7 @@ const SearchMenu = () => {
 
     return (
         <div id="location-searchbar">
-            <div className="location-bar">
+            <form className="location-bar">
                 <input
                     id="location-input"
                     type="text"
@@ -39,7 +39,7 @@ const SearchMenu = () => {
                         <GrLocation />
                     </button>
                 </div>
-            </div>
+            </form>
         </div>
     );
 };
