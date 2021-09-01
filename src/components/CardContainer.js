@@ -11,7 +11,7 @@ const CardContainer = () => {
                 weatherData.map((item, index) => {
                     return (
                         <WeatherCard
-                            key={index}
+                            key={item.city.id}
                             index={index}
                             weatherData={item.city}
                         />

@@ -28,6 +28,7 @@ const AppProvider = ({ children }) => {
                 city.coord.lon,
                 city.coord.lat
             );
+            console.log(city);
             if (!weatherData.find((c) => c.city.id === city.id)) {
                 setWeatherData([
                     ...weatherData,

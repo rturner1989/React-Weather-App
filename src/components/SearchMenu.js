@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useGlobalContext } from "../context";
 import { GrLocation } from "react-icons/gr";
 
 const SearchMenu = () => {
-    const [cityName, setCityName] = useState("");
-
     const { getLongLatData, getCityData } = useGlobalContext();
+    const [cityName, setCityName] = useState("");
 
     return (
         <div id="location-searchbar">
@@ -13,8 +12,11 @@ const SearchMenu = () => {
                 <input
                     id="location-input"
                     type="text"
+                    value={cityName}
                     placeholder="Search for a location"
-                    onChange={(e) => setCityName(e.target.value)}
+                    onChange={(e) => {
+                        setCityName(e.target.value);
+                    }}
                 />
                 <div>
                     <button
@@ -23,6 +25,7 @@ const SearchMenu = () => {
                         onClick={(e) => {
                             e.preventDefault();
                             getCityData(cityName);
+                            setCityName("");
                         }}
                         disabled={cityName === "" ? true : false}
                     >
