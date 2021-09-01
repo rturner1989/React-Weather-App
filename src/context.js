@@ -33,7 +33,11 @@ const AppProvider = ({ children }) => {
                 setWeatherData([
                     ...weatherData,
                     {
-                        city: { ...city, time: moment().format("LTS") },
+                        city: {
+                            ...city,
+                            date: moment().format("LL"),
+                            time: moment().format("LTS"),
+                        },
                         forecast,
                     },
                 ]);
@@ -80,7 +84,11 @@ const AppProvider = ({ children }) => {
                 setWeatherData([
                     ...weatherData,
                     {
-                        city: { ...city, time: moment().format("LTS") },
+                        city: {
+                            ...city,
+                            date: moment().format("LL"),
+                            time: moment().format("LTS"),
+                        },
                         forecast,
                     },
                 ]);
