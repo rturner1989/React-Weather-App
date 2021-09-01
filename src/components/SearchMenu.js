@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useGlobalContext } from "../context";
 import { GrLocation } from "react-icons/gr";
 

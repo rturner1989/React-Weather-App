@@ -104,6 +104,7 @@
 #weather-header {
     font-size: 1.7rem;
     margin: 0;
+    max-height: 110px;
 }
 #weather-header span {
     font-size: 1.8rem;
