@@ -1,6 +1,7 @@
 import React from "react";
 import { useGlobalContext } from "../context";
 import { FiSunset } from "react-icons/fi";
+import { WiHumidity } from "react-icons/wi";
 
 const WeatherCard = ({ weatherData, index }) => {
     const { updateCurrentForecast } = useGlobalContext();
@@ -37,7 +38,11 @@ const WeatherCard = ({ weatherData, index }) => {
             </div>
             <div className="weather-info">
                 <p id="weather-humidity">
-                    Humidity: <span>{weatherData.main.humidity}%</span>
+                    <span>Humidity:</span>
+                    <span id="humidity-data">{weatherData.main.humidity}%</span>
+                    <span className="icon" id="humidity-icon">
+                        <WiHumidity />
+                    </span>
                 </p>
                 <p id="weather-sunset">
                     <span>Sunset: </span>
