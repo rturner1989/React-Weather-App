@@ -7,43 +7,44 @@ const SearchMenu = () => {
     const [cityName, setCityName] = useState("");
 
     return (
-        <div id="location-searchbar">
-            <form className="location-bar">
+        <form id="location-searchbar">
+            <div className="location-bar">
                 <input
                     id="location-input"
                     type="text"
                     value={cityName}
                     placeholder="Search for a location"
+                    aria-label="location search menu with two buttons"
                     onChange={(e) => {
                         setCityName(e.target.value);
                     }}
                 />
-                <div>
-                    <button
-                        id="search-btn"
-                        type="submit"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            getCityData(cityName);
-                            setCityName("");
-                        }}
-                        disabled={cityName === "" ? true : false}
-                    >
-                        Submit
-                    </button>
-                    <button
-                        id="current-location-btn"
-                        type="submit"
-                        onClick={(e) => {
-                            e.preventDefault();
-                            getLongLatData();
-                        }}
-                    >
-                        <GrLocation aria-hidden={true} focusable={false} />
-                    </button>
-                </div>
-            </form>
-        </div>
+                <button
+                    id="search-btn"
+                    type="submit"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        getCityData(cityName);
+                        setCityName("");
+                    }}
+                    variant="light"
+                    disabled={cityName === "" ? true : false}
+                >
+                    Submit
+                </button>
+                <button
+                    id="current-location-btn"
+                    type="submit"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        getLongLatData();
+                    }}
+                    variant="light"
+                >
+                    <GrLocation aria-hidden={true} focusable={false} />
+                </button>
+            </div>
+        </form>
     );
 };
 
