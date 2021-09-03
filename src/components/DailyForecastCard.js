@@ -1,4 +1,5 @@
 import React from "react";
+import { WiHumidity } from "react-icons/wi";
 
 const DailyForecastCard = ({ day }) => {
     const words = day.weather[0].description;
@@ -8,16 +9,25 @@ const DailyForecastCard = ({ day }) => {
 
     return (
         <div className="forecast-card">
-            <h4 className="daily-weather-info">
-                {new Date(day.dt * 1000).toLocaleDateString("en-GB")}
-            </h4>
-            <img
-                src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
-                alt="weather icon"
-            />
-            <p className="forecast-info">{replace}</p>
-            <p className="forecast-info"> Humidity: {day.humidity}%</p>
-            <table>
+            <div className="forecast-weather-info" id="forecast-temp-info">
+                <h4 id="forecast-header">
+                    {new Date(day.dt * 1000).toLocaleDateString("en-GB")}
+                </h4>
+                <img
+                    id="forecast-img"
+                    src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                    alt="weather icon"
+                />
+                <p id="forecast-description">{replace}</p>
+            </div>
+            <p id="forecast-humidity">
+                <span>Humidity:</span>
+                <span id="forecast-humidity-data">{day.humidity}%</span>
+                <span className="icon" id="forecast-humidity-icon">
+                    <WiHumidity />
+                </span>
+            </p>
+            <table className="forecast-weather-info">
                 <tbody>
                     <tr>
                         <td></td>

@@ -4,6 +4,9 @@
     --text-color: rgb(255, 255, 255);
     --icon-color: rgb(255, 166, 0);
     --card-background-color: rgb(30, 0, 128);
+    --inner-card-background-color: rgba(77, 36, 211, 0.35);
+    --standard-font-size: 16px;
+    --header-font-size: 1.7rem;
 }
 /* Root */
 * {
@@ -70,11 +73,11 @@
     color: var(--text-color);
     border: var(--text-color) solid 2px;
     border-radius: 5px;
-    width: 260px;
-    min-width: 260px;
-    height: 300px;
-    min-height: 280px;
-    margin: 49px 15px 49px 15px;
+    width: 270px;
+    min-width: 270px;
+    height: 320px;
+    min-height: 320px;
+    margin: 38px 10px 38px 10px;
     padding: 5px;
     animation: slider var(--duration);
     animation-fill-mode: forwards;
@@ -100,13 +103,12 @@
     width: 100%;
 }
 #weather-temp-info {
-    background-color: rgba(77, 36, 211, 0.35);
-    /* border: 2px solid orange; */
+    background-color: var(--inner-card-background-color);
     border-radius: 5px;
     width: 80%;
 }
 #weather-header {
-    font-size: 1.7rem;
+    font-size: var(--header-font-size);
     margin: 0;
     max-height: 110px;
 }
@@ -121,12 +123,12 @@
 }
 #weather-date {
     margin: 0;
-    font-size: 16px;
+    font-size: var(--standard-font-size);
     padding: 3px;
 }
 #weather-time {
     margin: 0;
-    font-size: 16px;
+    font-size: var(--standard-font-size);
 }
 #weather-img {
     margin: 0;
@@ -134,7 +136,7 @@
 }
 #weather-description {
     margin: 0;
-    font-size: 16px;
+    font-size: var(--standard-font-size);
 }
 #weather-temp {
     margin: 0;
@@ -148,11 +150,11 @@
     justify-content: space-between;
     margin-bottom: 5px;
     width: 100%;
-    font-size: 16px;
+    font-size: var(--standard-font-size);
 }
 #humidity-data {
     margin-left: -25px;
-    font-size: 22px;
+    font-size: 1.4rem;
 }
 #humidity-icon {
     background-color: var(--icon-color);
@@ -165,7 +167,7 @@
 }
 #weather-sunset {
     width: 100%;
-    font-size: 16px;
+    font-size: var(--standard-font-size);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -238,9 +240,39 @@
         transform: translateX(0%);
     }
 }
-
-.forecast-card hr {
+#forecast-header {
+    font-size: var(--header-font-size);
+}
+.forecast-weather-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--inner-card-background-color);
+    border-radius: 5px;
+    width: 90%;
+}
+#forecast-img {
+    margin: 0;
+    width: 50px;
+}
+#forecast-humidity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
     width: 100%;
+    font-size: var(--standard-font-size);
+}
+#forecast-humidity-data {
+    margin-left: -20px;
+    font-size: 1.4rem;
+}
+#forecast-humidity-icon {
+    background-color: var(--icon-color);
+    padding: 2px;
+    border-radius: 3px;
+    font-size: 2rem;
 }
 td {
     text-align: center;
