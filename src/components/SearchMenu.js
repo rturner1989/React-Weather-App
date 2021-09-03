@@ -27,7 +27,6 @@ const SearchMenu = () => {
                         getCityData(cityName);
                         setCityName("");
                     }}
-                    variant="light"
                     disabled={cityName === "" ? true : false}
                 >
                     Submit
@@ -39,9 +38,12 @@ const SearchMenu = () => {
                         e.preventDefault();
                         getLongLatData();
                     }}
-                    variant="light"
                 >
-                    <GrLocation aria-hidden={true} focusable={false} />
+                    <GrLocation
+                        id="location-icon"
+                        aria-hidden={true}
+                        focusable={false}
+                    />
                 </button>
             </div>
         </form>
