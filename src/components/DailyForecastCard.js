@@ -16,7 +16,8 @@ const DailyForecastCard = ({ day }) => {
                 <img
                     id="forecast-img"
                     src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
-                    alt="weather icon"
+                    alt="forecast weather icon"
+                    role="presentation"
                 />
                 <p id="forecast-description">{replace}</p>
             </div>
@@ -24,7 +25,7 @@ const DailyForecastCard = ({ day }) => {
                 <span>Humidity:</span>
                 <span id="forecast-humidity-data">{day.humidity}%</span>
                 <span className="icon" id="forecast-humidity-icon">
-                    <WiHumidity />
+                    <WiHumidity aria-hidden={true} focusable={false} />
                 </span>
             </p>
             <table className="forecast-weather-info">

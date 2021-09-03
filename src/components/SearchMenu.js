@@ -39,7 +39,7 @@ const SearchMenu = () => {
                             getLongLatData();
                         }}
                     >
-                        <GrLocation />
+                        <GrLocation aria-hidden={true} focusable={false} />
                     </button>
                 </div>
             </form>

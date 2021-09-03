@@ -15,7 +15,9 @@ const WeatherCard = ({ weatherData, index }) => {
         <div
             id={weatherData.id}
             className="weather-card"
+            tabindex="0"
             onClick={() => updateCurrentForecast(index)}
+            onKeyUp={() => updateCurrentForecast(index)}
         >
             <div className="weather-info">
                 <h3 id="weather-header">
@@ -30,6 +32,7 @@ const WeatherCard = ({ weatherData, index }) => {
                     id="weather-img"
                     src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
                     alt="weather icon"
+                    role="presentation"
                 />
                 <p id="weather-description">{replace}</p>
                 <p id="weather-temp">
@@ -41,7 +44,7 @@ const WeatherCard = ({ weatherData, index }) => {
                     <span>Humidity:</span>
                     <span id="humidity-data">{weatherData.main.humidity}%</span>
                     <span className="icon" id="humidity-icon">
-                        <WiHumidity />
+                        <WiHumidity aria-hidden={true} focusable={false} />
                     </span>
                 </p>
                 <p id="weather-sunset">
@@ -53,7 +56,7 @@ const WeatherCard = ({ weatherData, index }) => {
                         pm
                     </span>
                     <span className="icon" id="sunset-icon">
-                        <FiSunset />
+                        <FiSunset aria-hidden={true} focusable={false} />
                     </span>
                 </p>
             </div>

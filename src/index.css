@@ -54,7 +54,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: red solid 1px;
     background-color: black;
     flex-wrap: wrap;
     overflow-x: hidden;
@@ -83,8 +82,8 @@
     animation-fill-mode: forwards;
     outline: transparent 5px solid;
 }
-.weather-card:hover {
-    transform: translateY(10px);
+.weather-card:focus {
+    outline: var(--icon-color) 5px solid;
 }
 @keyframes slider {
     from {
@@ -189,7 +188,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    border: green solid 1px;
     background-color: black;
     padding: 5px;
     width: 100%;
