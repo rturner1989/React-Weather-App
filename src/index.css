@@ -3,6 +3,7 @@
     --duration: 0.3s;
     --text-color: rgb(255, 255, 255);
     --icon-color: rgb(255, 166, 0);
+    --app-background-color: rgba(61, 58, 73, 0.6);
     --card-background-color: rgb(30, 0, 128);
     --card-background-color-disabled: rgb(141, 144, 184);
     --inner-card-background-color: rgba(77, 36, 211, 0.35);
@@ -25,6 +26,8 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
+    background-image: url("./Images/3qtHlz.jpg");
+    background-size: cover;
 }
 .hidden-label {
     clip: rect(0 0 0 0);
@@ -44,6 +47,8 @@
     align-items: center;
     width: 1600px;
     height: 800px;
+    background-color: var(--app-background-color);
+    border-radius: 10px;
 }
 /* Search Function */
 #location-searchbar {
@@ -52,7 +57,6 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: black;
     padding: 10px;
 }
 .location-bar {
@@ -123,7 +127,6 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    background-color: black;
     flex-wrap: wrap;
     overflow-x: hidden;
     overflow-y: auto;
@@ -255,7 +258,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    background-color: black;
     padding: 5px;
     width: 100%;
     max-width: 1600px;
@@ -343,49 +345,6 @@ td {
     text-align: center;
     padding: 3px;
 }
-/* @media (max-width: 1552px) {
-    #app-container {
-        overflow: hidden;
-        max-width: 1600px;
-        grid-template-rows: 1fr 2fr;
-        height: 100vh;
-    }
-    .weather-card {
-        margin: 9px 5px 7px 5px;
-    }
-    #daily-weather-forecast {
-        flex-wrap: wrap;
-    }
-} */
-/* @media (max-width: 960px) {
-    #app-container {
-        overflow-y: auto;
-    }
-} */
-/* @media (max-width: 660px) {
-    #app-container {
-        max-width: 1600px;
-        grid-template-rows: 1fr 2fr;
-        height: 100vh;
-    }
-    #daily-weather-forecast {
-        justify-content: center;
-        max-height: 100%;
-    }
-    .forecast-card {
-        width: 152px;
-        height: auto;
-    }
-    .forecast-weather-info {
-        width: 100%;
-    }
-    .forecast-card table {
-        display: none;
-    }
-    #forecast-humidity-icon {
-        display: none;
-    }
-} */
 @media (max-width: 450px) and (max-height: 812px) {
     html,
     body {
