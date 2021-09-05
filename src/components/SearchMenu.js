@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useGlobalContext } from "../context";
-import { GrLocation } from "react-icons/gr";
+import { MdLocationSearching } from "react-icons/md";
 
 const SearchMenu = () => {
     const { getLongLatData, getCityData } = useGlobalContext();
@@ -9,16 +9,22 @@ const SearchMenu = () => {
     return (
         <form id="location-searchbar">
             <div className="location-bar">
+                <label htmlFor="location-input" className="hidden-label">
+                    Location Input
+                </label>
                 <input
                     id="location-input"
                     type="text"
                     value={cityName}
                     placeholder="Search for a location"
-                    aria-label="location search menu with two buttons"
                     onChange={(e) => {
                         setCityName(e.target.value);
                     }}
+                    tabIndex="0"
                 />
+                <label htmlFor="search-btn" className="hidden-label">
+                    Search Button
+                </label>
                 <button
                     id="search-btn"
                     type="submit"
@@ -31,15 +37,17 @@ const SearchMenu = () => {
                 >
                     Submit
                 </button>
+                <label htmlFor="current-location-btn" className="hidden-label">
+                    Current Location Button
+                </label>
                 <button
                     id="current-location-btn"
-                    type="submit"
                     onClick={(e) => {
                         e.preventDefault();
                         getLongLatData();
                     }}
                 >
-                    <GrLocation
+                    <MdLocationSearching
                         id="location-icon"
                         aria-hidden={true}
                         focusable={false}
