@@ -3,7 +3,7 @@ import { useGlobalContext } from "../context";
 import { FiSunset } from "react-icons/fi";
 import { WiHumidity } from "react-icons/wi";
 
-const WeatherCard = ({ weatherData, index }) => {
+const WeatherCard = ({ weatherData, index, position }) => {
     const { updateCurrentForecast } = useGlobalContext();
 
     const words = weatherData.weather[0].description;
@@ -14,8 +14,10 @@ const WeatherCard = ({ weatherData, index }) => {
     return (
         <div
             id={weatherData.id}
-            className="weather-card"
-            tabindex="0"
+            className={`${
+                position ? `weather-card ${position}` : "weather-card"
+            }`}
+            tabIndex="0"
             onClick={() => updateCurrentForecast(index)}
             onKeyUp={() => updateCurrentForecast(index)}
         >
