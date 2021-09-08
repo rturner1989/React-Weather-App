@@ -17,7 +17,6 @@ const AppProvider = ({ children }) => {
             );
         return text;
     };
-
     const getCityData = async (cityName) => {
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
@@ -31,7 +30,6 @@ const AppProvider = ({ children }) => {
             console.log(city);
             if (!weatherData.find((c) => c.city.id === city.id)) {
                 setWeatherData([
-                    ...weatherData,
                     {
                         city: {
                             ...city,
@@ -40,13 +38,13 @@ const AppProvider = ({ children }) => {
                         },
                         forecast,
                     },
+                    ...weatherData,
                 ]);
             }
         } else {
             alert("Error - Invalid Location Entered");
         }
     };
-
     const getDailyForecast = async (long, lat) => {
         const response = await fetch(
             `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=current,minutely,hourly,alerts&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
@@ -62,13 +60,11 @@ const AppProvider = ({ children }) => {
         daily[7].id = makeid();
         return { ...data, daily };
     };
-
     const getLocation = () => {
         return new Promise((resolve, rejection) => {
             navigator.geolocation.getCurrentPosition(resolve, rejection);
         });
     };
-
     const getLongLatData = async () => {
         const position = await getLocation();
         const latitude = position.coords.latitude;
@@ -95,11 +91,9 @@ const AppProvider = ({ children }) => {
             }
         }
     };
-
     const updateCurrentForecast = (index) => {
         setCurrentForecast(weatherData[index].forecast);
     };
-
     return (
         <AppContext.Provider
             value={{
