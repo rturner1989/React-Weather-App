@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useGlobalContext } from "../context";
+import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 import WeatherCard from "./WeatherCard";
 
@@ -58,25 +59,45 @@ const CardContainer = () => {
                         />
                     );
                 })}
+                <label htmlFor="prev-btn" className="hidden-label">
+                    Previous Weather Card
+                </label>
                 <button
-                    className="prev-btn"
+                    id="prev-btn"
+                    type="button"
+                    className="prev-next-btn"
                     onClick={() => {
                         if (currentCardIndex > 0) {
                             setCurrentCardIndex(currentCardIndex - 1);
                         }
                     }}
                 >
-                    previous
+                    <BiLeftArrow
+                        className="btn-icon"
+                        id="prev-btn-icon"
+                        aria-hidden={true}
+                        focusable={false}
+                    />
                 </button>
+                <label htmlFor="next-btn" className="hidden-label">
+                    Next Weather Card
+                </label>
                 <button
-                    className="next-btn"
+                    type="button"
+                    id="next-btn"
+                    className="prev-next-btn"
                     onClick={() => {
                         if (currentCardIndex < weatherData.length - 1) {
                             setCurrentCardIndex(currentCardIndex + 1);
                         }
                     }}
                 >
-                    next
+                    <BiRightArrow
+                        className="btn-icon"
+                        id="next-btn-icon"
+                        aria-hidden={true}
+                        focusable={false}
+                    />
                 </button>
             </div>
         );
