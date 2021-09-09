@@ -616,6 +616,7 @@ td {
         flex-direction: row;
         flex-wrap: wrap;
         max-height: unset;
+        overflow-y: auto;
     }
     .forecast-card {
         display: grid;
