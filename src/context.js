@@ -30,6 +30,7 @@ const AppProvider = ({ children }) => {
             console.log(city);
             if (!weatherData.find((c) => c.city.id === city.id)) {
                 setWeatherData([
+                    ...weatherData,
                     {
                         city: {
                             ...city,
@@ -38,7 +39,6 @@ const AppProvider = ({ children }) => {
                         },
                         forecast,
                     },
-                    ...weatherData,
                 ]);
             }
         } else {

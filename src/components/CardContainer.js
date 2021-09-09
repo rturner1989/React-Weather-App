@@ -37,10 +37,7 @@ const CardContainer = () => {
             </div>
         );
     }
-    if (
-        (windowDimensions.width <= 450 && windowDimensions.height <= 812) ||
-        (windowDimensions.width <= 812 && windowDimensions.height <= 450)
-    ) {
+    if (windowDimensions.width <= 450 || windowDimensions.width <= 900) {
         return (
             <div id="weather-data-container">
                 {weatherData.map((item, index) => {

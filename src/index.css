@@ -156,6 +156,7 @@ body {
     min-width: 270px;
     height: 320px;
     min-height: 320px;
+    max-height: 350px;
     margin: 38px 10px 38px 10px;
     padding: 5px;
     animation: slider var(--duration);
@@ -264,6 +265,7 @@ body {
     align-self: start;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
     padding: 5px;
@@ -271,6 +273,7 @@ body {
     max-width: 1600px;
     height: 100%;
     max-height: 400px;
+    overflow-y: auto;
 }
 .forecast-card {
     display: flex;
@@ -283,7 +286,6 @@ body {
     border-radius: 5px;
     width: 225px;
     height: 320px;
-    margin: 5px;
     padding: 5px;
     transform: translateX(1000%);
     animation: slide var(--duration);
@@ -353,7 +355,7 @@ td {
     text-align: center;
     padding: 3px;
 }
-@media (max-width: 450px) and (max-height: 812px) {
+@media (max-width: 450px) {
     html,
     body {
         overflow: hidden;
@@ -437,6 +439,7 @@ td {
     #location-searchbar {
         height: fit-content;
         padding: 5px;
+        margin: 5px;
     }
     #daily-weather-forecast {
         flex-direction: column;
@@ -475,7 +478,7 @@ td {
         grid-area: head2;
     }
 }
-@media (max-width: 812px) and (max-height: 450px) {
+@media (max-width: 900px) {
     html,
     body {
         overflow: hidden;
@@ -587,6 +590,44 @@ td {
         justify-content: center;
         height: 170px;
         width: 100%;
+        padding: 0;
+    }
+    #forecast-temp-info {
+        grid-area: head1;
+        height: fit-content;
+        margin-top: 5px;
+        padding: 4px;
+    }
+    #forecast-humidity {
+        padding: 4px;
+        margin-bottom: 0;
+        grid-area: body1;
+    }
+    .forecast-card table {
+        height: fit-content;
+        grid-area: head2;
+    }
+}
+@media (min-width: 901px) and (max-width: 1600px) {
+    #app-container {
+        height: 95%;
+        width: 95%;
+    }
+    #daily-weather-forecast {
+        flex-direction: row;
+        max-height: unset;
+    }
+    .forecast-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+            "head1 head2"
+            "body1 head2";
+        place-items: center;
+        justify-content: center;
+        height: 170px;
+        width: 50%;
         padding: 0;
     }
     #forecast-temp-info {
