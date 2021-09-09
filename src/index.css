@@ -614,6 +614,7 @@ td {
     }
     #daily-weather-forecast {
         flex-direction: row;
+        flex-wrap: wrap;
         max-height: unset;
     }
     .forecast-card {
