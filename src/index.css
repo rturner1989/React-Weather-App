@@ -265,7 +265,6 @@ body {
     align-self: start;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-evenly;
     padding: 5px;
@@ -273,7 +272,7 @@ body {
     max-width: 1600px;
     height: 100%;
     max-height: 400px;
-    overflow-y: auto;
+    overflow: hidden;
 }
 .forecast-card {
     display: flex;
