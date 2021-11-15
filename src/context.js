@@ -19,7 +19,7 @@ const AppProvider = ({ children }) => {
     };
     const getCityData = async (cityName) => {
         const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
+            `https://turner-weather-api.herokuapp.com/weather/current?q=${cityName}&units=metric`
         );
         if (response.status !== 404) {
             const city = await response.json();
@@ -47,7 +47,7 @@ const AppProvider = ({ children }) => {
     };
     const getDailyForecast = async (long, lat) => {
         const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&exclude=current,minutely,hourly,alerts&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
+            `https://turner-weather-api.herokuapp.com/weather/forecast?lat=${lat}&lon=${long}&exclude=current,minutely,hourly,alerts&units=metric`
         );
         const data = await response.json();
         const daily = [...data.daily];
@@ -71,7 +71,7 @@ const AppProvider = ({ children }) => {
         const longitude = position.coords.longitude;
 
         const response = await fetch(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=91d2f9efc77a289707cbc8c106b46727`
+            `https://turner-weather-api.herokuapp.com/weather/current?lat=${latitude}&lon=${longitude}&units=metric`
         );
         if (response.status !== 404) {
             const city = await response.json();
