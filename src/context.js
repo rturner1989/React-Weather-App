@@ -22,7 +22,8 @@ const AppProvider = ({ children }) => {
             `https://turner-weather-api.herokuapp.com/weather/current?q=${cityName}&units=metric`
         );
         if (response.status !== 404) {
-            const city = await response.json();
+            const data = await response.json();
+            const city = data.results;
             const forecast = await getDailyForecast(
                 city.coord.lon,
                 city.coord.lat
@@ -50,7 +51,7 @@ const AppProvider = ({ children }) => {
             `https://turner-weather-api.herokuapp.com/weather/forecast?lat=${lat}&lon=${long}&exclude=current,minutely,hourly,alerts&units=metric`
         );
         const data = await response.json();
-        const daily = [...data.daily];
+        const daily = [...data.results.daily];
         daily[1].id = makeid();
         daily[2].id = makeid();
         daily[3].id = makeid();
@@ -74,7 +75,8 @@ const AppProvider = ({ children }) => {
             `https://turner-weather-api.herokuapp.com/weather/current?lat=${latitude}&lon=${longitude}&units=metric`
         );
         if (response.status !== 404) {
-            const city = await response.json();
+            const data = await response.json();
+            const city = data.results;
             const forecast = await getDailyForecast(longitude, latitude);
             if (!weatherData.find((c) => c.city.id === city.id)) {
                 setWeatherData([
